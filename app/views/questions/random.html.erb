@@ -1,0 +1,4 @@
+<p><%=@question.question_text%></p>
+<%@question.answers.each do |answer|%>
+  <p><%=answer.answer_text%></p>
+<%end%>
