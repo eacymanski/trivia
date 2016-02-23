@@ -4,8 +4,29 @@ class QuestionsController < ApplicationController
   end
   
   def check_answer
-    answer =Answer.find(params(:answer_id))
-    render json: { correct: answer.correct}
+    response = {
+      correct: answer.correct,
+      correct_answers: question.correct_answers.map(&:id),
+    }
+    render json: response
+  end
+
+  private
+
+  def answer
+    @answer ||= Answer.find(answer_id)
+  end
+
+  def question
+    @question ||= Question.find(question_id)
+  end
+
+  def answer_id
+    params.require(:answer_id)
+  end
+
+  def question_id
+    params.require(:id)
   end
      
 end

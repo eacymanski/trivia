@@ -12,5 +12,26 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
 //= require_tree .
+
+$( document ).ready(function() {
+  $(".question-answer").click(function() {
+    var target = $(this);
+    $.ajax({
+      url: "/questions/check_answer",
+      data: {id: target.parent().data("question"), answer_id: target.data("answer")},
+      success: function(data){
+
+        target.addClass("wrong");
+
+        $(data['correct_answers']).each( function(i, answer_id) {
+          $(".question-answer[data-answer='" + answer_id + "']").each( function(i, correct_answer) {
+            $(correct_answer).removeClass("wrong");
+            $(correct_answer).addClass("correct");
+          });
+        });
+
+      }
+    });
+  });
+});

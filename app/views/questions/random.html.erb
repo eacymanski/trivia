@@ -1,10 +1,13 @@
 <div class="container">
   <div class="jumbotron">
-    <div class="list-group question-group">
+    <div class="list-group question-group" data-question="<%=@question.id%>">
       <button type="button" class="list-group-item active btn-block"> <%=@question.question_text%></button> 
       <%@question.answers.each do |answer|%>
-        <button type="button" class="list-group-item btn-block question-answer"><%=answer.answer_text%></button>
+        <button type="button" class="list-group-item btn-block question-answer" data-answer="<%=answer.id%>"><%=answer.answer_text%></button>
       <%end%>
     </div>
+
+    <a id="next-question" disabled=true href=<%=random_questions_path%>>Next Question</a>
+
   </div>
 </div>
