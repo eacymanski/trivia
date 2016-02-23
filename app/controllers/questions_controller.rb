@@ -3,4 +3,9 @@ class QuestionsController < ApplicationController
     @question = Question.all.sample
   end
   
+  def check_answer
+    answer =Answer.find(params(:answer_id))
+    render json: { correct: answer.correct}
+  end
+     
 end

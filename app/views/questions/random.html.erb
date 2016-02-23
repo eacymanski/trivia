@@ -1,4 +1,10 @@
-<p><%=@question.question_text%></p>
-<%@question.answers.each do |answer|%>
-  <p><%=answer.answer_text%></p>
-<%end%>
+<div class="container">
+  <div class="jumbotron">
+    <div class="list-group question-group">
+      <button type="button" class="list-group-item active btn-block"> <%=@question.question_text%></button> 
+      <%@question.answers.each do |answer|%>
+        <button type="button" class="list-group-item btn-block question-answer"><%=answer.answer_text%></button>
+      <%end%>
+    </div>
+  </div>
+</div>
