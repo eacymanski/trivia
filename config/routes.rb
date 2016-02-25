@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  resource :users
+ resource :users
   devise_for :users
 
   resource :questions do
@@ -9,5 +9,8 @@ Rails.application.routes.draw do
       get "check_answer"
     end
   end
+  
+  get '/users/:id', :to => 'users#show', :as => :user
+  get '/users/edit', :to => 'users#edit', :as => :user_edit
 
 end

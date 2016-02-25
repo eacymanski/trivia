@@ -3,7 +3,6 @@ class UsersController < ApplicationController
  end
  
  def edit
-  @user=User.first
  end
  
  def update
