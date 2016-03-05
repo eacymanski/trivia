@@ -6,8 +6,7 @@
         <button type="button" class="list-group-item btn-block question-answer" data-answer="<%=answer.id%>"><%=answer.answer_text%></button>
       <%end%>
     </div>
-
+    <div class="category"><%=@question.category.name%></div>
     <a id="next-question" disabled=true href=<%=random_questions_path%>>Next Question</a>
-
   </div>
 </div>

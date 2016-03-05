@@ -10,6 +10,20 @@ class QuestionsController < ApplicationController
     }
     render json: response
   end
+  
+  def new
+    @question = Question.new
+    3.times {@question.answers.build}
+  end
+  
+  def create
+    @question=Question.new(question_params)
+    if @question.save
+      redirect_to new_questions_path
+    else
+      render :new
+    end
+  end
 
   private
 
@@ -28,5 +42,8 @@ class QuestionsController < ApplicationController
   def question_id
     params.require(:id)
   end
-     
+  
+  def question_params
+    params.require(:question).permit(:question_text, :category_id, answer_attributes: [:id, :answer_text, :correct])
+  end
 end

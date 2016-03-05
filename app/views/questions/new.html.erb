@@ -1,0 +1,22 @@
+<h1>New Question</h1>
+<%= form_for @question do |f| %>
+  <div class="field">
+    <%= f.label :question_text%><br>
+    <%= f.text_field :question_text%>
+  </div>
+   <div class="field">
+    <%= f.label :category%><br>
+    <%= f.select :category_id, category_options%>
+  </div>
+  <%=f.fields_for :answers do |answer_form|%>
+    <div class="field">
+      <%=answer_form.check_box :correct%>
+      <%=answer_form.label :answer%><br>
+      <%=answer_form.text_field :answer_text%>
+     </div>
+    <%end%>
+    <div>Check Correct Answer</div>
+  <div class="actions">
+     <%= f.submit "Submit", class: "btn btn-primary" %>
+  </div>
+<%end%>
